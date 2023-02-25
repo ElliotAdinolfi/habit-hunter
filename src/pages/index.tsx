@@ -21,7 +21,7 @@ export default function Home() {
         />
       </Head>
       <main className={styles.main}>
-        <div>hi</div>
+        <h1>hi</h1>
       </main>
     </>
   );
