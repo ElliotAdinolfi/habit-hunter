@@ -2,19 +2,70 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 6rem;
+  padding: 3rem;
   min-height: 100vh;
   font-family: 'Inter', sans-serif;
 }
 
 .main h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--secondary);
+}
+
+.main h2 {
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
+.loginContainer {
+  width: 800px;
+  height: 400px;
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  text-align: center;
+}
+
+.loginButton {
+  background-color: var(--secondary);
+  padding: 20px 60px;
+  position: relative;
+  top: 25%;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  transition: 300ms;
+  outline: 2px solid var(--secondary);
+}
+
+.loginButton:hover {
+  background-color: transparent;
+  outline: 2px solid var(--secondary);
+  transition: 300ms;
+  color: var(--secondary);
+}
+
+.info {
+  line-height: 2;
+  text-align: center;
+}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
+  .loginButton {
+    cursor: pointer;
+  }
 }
 
 /* Mobile */

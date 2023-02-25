@@ -1,7 +1,11 @@
 import Head from 'next/head';
 import styles from '@/styles/Home.module.css';
+import Login from '@/components/Login';
+import { useSession } from 'next-auth/react';
 
 export default function Home() {
+  const { data: session } = useSession();
+
   return (
     <>
       <Head>
@@ -21,8 +25,7 @@ export default function Home() {
         />
       </Head>
       <main className={styles.main}>
-        <h1>Habit Hunter</h1>
-        <p>A simpler approach to building good habits</p>
+        <Login />
       </main>
     </>
   );
