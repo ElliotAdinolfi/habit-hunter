@@ -21,7 +21,8 @@ export default function Home() {
         />
       </Head>
       <main className={styles.main}>
-        <h1>hi</h1>
+        <h1>Habit Hunter</h1>
+        <p>A simpler approach to building good habits</p>
       </main>
     </>
   );

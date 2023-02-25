@@ -1,11 +1,16 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
   font-family: 'Inter', sans-serif;
+}
+
+.main h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 /* Enable hover only on non-touch devices */
