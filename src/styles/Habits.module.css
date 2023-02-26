@@ -1,0 +1,47 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.header h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--secondary);
+}
+
+.logoutButton {
+  background-color: var(--secondary);
+  padding: 10px 60px;
+  position: relative;
+  top: 25%;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  transition: 300ms;
+  outline: 2px solid var(--secondary);
+}
+
+.logoutButton:hover {
+  background-color: transparent;
+  outline: 2px solid var(--secondary);
+  transition: 300ms;
+  color: var(--secondary);
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  .logoutButton {
+    cursor: pointer;
+  }
+}

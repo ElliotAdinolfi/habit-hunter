@@ -4,7 +4,7 @@ import Login from '@/components/Login';
 import { useSession } from 'next-auth/react';
 
 export default function Home() {
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
 
   return (
     <>

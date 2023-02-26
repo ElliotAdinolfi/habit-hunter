@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import Home from '../src/pages/index';
+import Habits from '../src/pages/habits';
 import { SessionProvider } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
@@ -8,8 +8,8 @@ jest.mock('next/router', () => ({
   useRouter: jest.fn(),
 }));
 
-describe('Home', () => {
-  it('renders a heading', () => {
+describe('Habits', () => {
+  it('renders the logo', () => {
     const push = jest.fn();
     useRouter.mockImplementation(() => ({
       route: '/',
@@ -25,44 +25,15 @@ describe('Home', () => {
           user: { name: 'Test User', email: 'test@example.com' },
         }}
       >
-        <Home />
+        <Habits />
       </SessionProvider>
     );
 
-    const heading = screen.getByRole('heading', {
+    const logo = screen.getByRole('heading', {
       level: 1,
       name: /Habit Hunter/i,
     });
-
-    expect(heading).toBeInTheDocument();
-  });
-
-  it('renders a subheading', () => {
-    const push = jest.fn();
-    useRouter.mockImplementation(() => ({
-      route: '/',
-      pathname: '/',
-      query: {},
-      asPath: '/',
-      push,
-    }));
-
-    render(
-      <SessionProvider
-        session={{
-          user: { name: 'Test User', email: 'test@example.com' },
-        }}
-      >
-        <Home />
-      </SessionProvider>
-    );
-
-    const subheading = screen.getByRole('heading', {
-      level: 2,
-      name: /A habit tracker that lets you focus in on building life-long habits/i,
-    });
-
-    expect(subheading).toBeInTheDocument();
+    expect(logo).toBeInTheDocument();
   });
 
   it('renders a button', () => {
@@ -81,12 +52,12 @@ describe('Home', () => {
           user: { name: 'Test User', email: 'test@example.com' },
         }}
       >
-        <Home />
+        <Habits />
       </SessionProvider>
     );
 
     const button = screen.getByRole('button', {
-      name: /Start Tracking/i,
+      name: /Log Out/i,
     });
 
     expect(button).toBeInTheDocument();
