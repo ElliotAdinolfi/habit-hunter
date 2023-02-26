@@ -15,7 +15,6 @@ export default function Login() {
       <button className={styles.loginButton} onClick={() => signIn()}>
         Start Tracking
       </button>
-      {session && <p>session.user.email</p>}
     </div>
   );
 }
