@@ -1,6 +1,7 @@
 import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import HabitsContainer from '@/components/HabitsContainer';
 import styles from '@/styles/Habits.module.css';
 
 export default function Habits() {
@@ -25,6 +26,7 @@ export default function Habits() {
             Log Out
           </button>
         </header>
+        <HabitsContainer />
       </div>
     </>
   );
