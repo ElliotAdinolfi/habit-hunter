@@ -18,7 +18,8 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "typeRoots": ["./typings"]
+    "typeRoots": ["./typings"],
+    "types": ["next", "next/types/global", "node", "jest"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
