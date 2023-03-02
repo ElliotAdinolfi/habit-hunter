@@ -1,11 +1,16 @@
 import Head from 'next/head';
 import styles from '@/styles/Home.module.css';
 import Login from '@/components/Login';
-import { useSession } from 'next-auth/react';
+import { createTable } from '../../lib/db';
+
+export async function getServerSideProps() {
+  await createTable();
+  return {
+    props: {},
+  };
+}
 
 export default function Home() {
-  // const { data: session } = useSession();
-
   return (
     <>
       <Head>
