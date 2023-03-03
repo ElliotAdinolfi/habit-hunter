@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --watch"
+    "test": "jest"
   },
   "dependencies": {
     "@types/node": "18.14.1",
@@ -18,7 +18,6 @@
     "eslint-config-next": "13.2.1",
     "next": "13.2.1",
     "next-auth": "^4.19.2",
-    "node-fetch": "^3.3.0",
     "pg": "^8.9.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
