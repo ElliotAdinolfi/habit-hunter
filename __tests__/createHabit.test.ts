@@ -2,7 +2,7 @@ import {
   describe,
   it,
   expect,
-  beforeAll,
+  beforeEach,
   afterAll,
   jest,
 } from '@jest/globals';
@@ -11,8 +11,8 @@ import pool from '../lib/db';
 import handler from '../src/pages/api/createHabit';
 
 describe('createHabit API should add a row to the database with the correct values', () => {
-  beforeAll(async () => {
-    await pool.query('DROP TABLE IF EXISTS test_habits');
+  beforeEach(async () => {
+    await pool.query('TRUNCATE TABLE test_habits');
     await pool.query(`CREATE TABLE IF NOT EXISTS test_habits (
       id SERIAL PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
@@ -31,7 +31,7 @@ describe('createHabit API should add a row to the database with the correct valu
     const req: NextApiRequest = {
       method: 'POST',
       body: {
-        name: 'Test Habit',
+        habit: 'Test Habit',
         user_email: 'test@example.com',
         table: 'test_habits',
       },
@@ -51,5 +51,31 @@ describe('createHabit API should add a row to the database with the correct valu
     );
 
     expect(results.rows[0].count).toBe('1');
+  });
+
+  it('should fail to add a row to the database if the name is missing', async () => {
+    const req: NextApiRequest = {
+      method: 'POST',
+      body: {
+        user_email: 'test@test.com',
+        table: 'test_habits',
+      },
+      headers: {},
+      url: '',
+    } as NextApiRequest;
+
+    const res: NextApiResponse = {
+      json: jest.fn(),
+      status: jest.fn().mockReturnThis(),
+    } as unknown as NextApiResponse;
+
+    await handler(req, res);
+
+    const results: any = await pool.query(
+      'SELECT COUNT(*) FROM test_habits'
+    );
+
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(results.rows[0].count).toBe('0');
   });
 });

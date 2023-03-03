@@ -21,6 +21,11 @@
     "typeRoots": ["./typings"],
     "types": ["next", "next/types/global", "node", "jest"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "__tests__/newHabitInput.test.jsx"
+  ],
   "exclude": ["node_modules"]
 }

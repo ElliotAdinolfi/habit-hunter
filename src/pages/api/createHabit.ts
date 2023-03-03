@@ -6,13 +6,13 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { name, user_email, table } = req.body;
+  const { habit, user_email, table } = req.body;
   const client: PoolClient = await pool.connect();
 
   try {
     const newHabit = await client.query(
       `INSERT INTO ${table} (name, user_email) VALUES ($1, $2) RETURNING *`,
-      [name, user_email]
+      [habit, user_email]
     );
     res.json(newHabit.rows[0]);
   } catch (error) {
