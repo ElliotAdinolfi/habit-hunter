@@ -7,14 +7,10 @@ import {
   jest,
 } from '@jest/globals';
 import { NextApiRequest, NextApiResponse } from 'next';
-import supertest from 'supertest';
 import pool from '../lib/db';
 import handler from '../src/pages/api/createHabit';
-// import { jest } from '@types/jest';
 
 describe('createHabit API should add a row to the database with the correct values', () => {
-  let request: any;
-
   beforeAll(async () => {
     await pool.query('DROP TABLE IF EXISTS test_habits');
     await pool.query(`CREATE TABLE IF NOT EXISTS test_habits (
@@ -25,7 +21,6 @@ describe('createHabit API should add a row to the database with the correct valu
       created_at TIMESTAMP NOT NULL DEFAULT NOW(),
       user_email VARCHAR(255) NOT NULL
     );`);
-    request = supertest('http://localhost:3000/api');
   });
 
   afterAll(async () => {
