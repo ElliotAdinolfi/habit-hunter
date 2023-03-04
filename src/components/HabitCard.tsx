@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useSession } from 'next-auth/react';
 import styles from '@/styles/Habits.module.css';
-import axios from 'axios';
+import DeleteHabit from './deleteHabit';
 
 interface HabitCardProps {
   id: number;
@@ -18,20 +17,30 @@ const HabitCard = ({
   days_completed,
   handleDeleteHabit,
 }: HabitCardProps) => {
-  const { data: session } = useSession();
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   return (
-    <div key={id} className={styles.habitCard}>
-      <a
-        className={styles.deleteHabit}
-        onClick={() => handleDeleteHabit(id)}
-      >
-        {' '}
-        &times;{' '}
-      </a>
-      <p>{name}</p>
-      <p>Done Today: {String(done_today)}</p>
-      <p>Streak: {days_completed}</p>
+    <div>
+      <div key={id} className={styles.habitCard}>
+        <a
+          className={styles.deleteHabit}
+          onClick={() => setConfirmDelete(!confirmDelete)}
+        >
+          {' '}
+          &times;{' '}
+        </a>
+        <p>{name}</p>
+        <p>Done Today: {String(done_today)}</p>
+        <p>Streak: {days_completed}</p>
+      </div>
+      {confirmDelete && (
+        <DeleteHabit
+          id={id}
+          confirmDelete={confirmDelete}
+          setConfirmDelete={setConfirmDelete}
+          handleDeleteHabit={handleDeleteHabit}
+        />
+      )}
     </div>
   );
 };

@@ -76,10 +76,8 @@ const HabitsContainer = () => {
         data: { id, user_email, table },
       })
       .then(() => {
-        console.log('before delete', deletedHabit);
         setHabitCount(habitCount - 1);
         setDeletedHabit([...deletedHabit, id]);
-        console.log('after delete', deletedHabit);
       });
   }
 
