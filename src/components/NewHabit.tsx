@@ -21,6 +21,14 @@ const NewHabit = ({
   const { data: session } = useSession();
   const [habit, setHabit] = useState<string>('');
 
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (e.key === 'Enter') {
+      handleSubmit();
+    }
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHabit(e.target.value);
   };
@@ -46,7 +54,11 @@ const NewHabit = ({
           <a onClick={() => setNewHabit(!newHabit)}> &times; </a>
         </div>
         <p>Add a new habit</p>
-        <input type="text" onChange={handleChange}></input>
+        <input
+          type="text"
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+        ></input>
         <button className={styles.submitHabit} onClick={handleSubmit}>
           Submit
         </button>

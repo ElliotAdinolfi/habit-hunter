@@ -64,6 +64,10 @@
   transition: 300ms;
 }
 
+.hideCard {
+  display: none;
+}
+
 .deleteHabit {
   position: absolute;
   top: 5px;
