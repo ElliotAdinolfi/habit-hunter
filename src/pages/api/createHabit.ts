@@ -16,8 +16,12 @@ export default async function handler(
     );
     res.json(newHabit.rows[0]);
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: 'Error in createHabit API' });
+    if (process.env.NODE_ENV === 'production') {
+      console.log(error);
+      res.status(500).json({ message: 'Error in createHabit API' });
+    } else {
+      res.status(500);
+    }
   } finally {
     client.release();
   }
