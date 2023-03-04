@@ -6,9 +6,18 @@ import { useSession } from 'next-auth/react';
 interface NewHabitProps {
   newHabit: boolean;
   setNewHabit: React.Dispatch<React.SetStateAction<boolean>>;
+  runGetHabits: () => void;
+  habitCount: number;
+  setHabitCount: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const NewHabit = ({ newHabit, setNewHabit }: NewHabitProps) => {
+const NewHabit = ({
+  newHabit,
+  setNewHabit,
+  runGetHabits,
+  habitCount,
+  setHabitCount,
+}: NewHabitProps) => {
   const { data: session } = useSession();
   const [habit, setHabit] = useState<string>('');
 
@@ -26,6 +35,8 @@ const NewHabit = ({ newHabit, setNewHabit }: NewHabitProps) => {
       .catch((err) => console.log(err));
 
     setNewHabit(!habit);
+    setHabitCount(habitCount + 1);
+    runGetHabits();
   };
 
   return (

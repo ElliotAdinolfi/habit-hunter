@@ -39,9 +39,38 @@
 }
 
 .habitContainer {
-  width: 100%;
+  width: 100vw;
   height: 80vh;
   padding: 100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-column-gap: 30px;
+  justify-content: center;
+}
+
+.habitCard {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+  border: 2px solid var(--secondary);
+  padding: 20px;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px;
+  transition: 300ms;
+}
+
+.deleteHabit {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  padding: 5px;
+  font-size: 1.8rem;
+  transition: 150ms;
 }
 
 .newHabit {
@@ -51,6 +80,9 @@
   border: 2px dashed var(--secondary);
   padding: 20px;
   font-size: 1.5rem;
+  position: relative;
+  top: 20px;
+  left: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,6 +117,7 @@
   height: 300px;
   border-radius: 20px;
   border: 2px solid var(--secondary);
+  background-color: black;
   padding: 20px;
   font-size: 1.5rem;
   display: flex;
@@ -131,7 +164,8 @@
     cursor: pointer;
   }
 
-  .closeForm:hover {
+  .closeForm:hover,
+  .deleteHabit:hover {
     cursor: pointer;
     color: hsla(332, 100%, 50%, 1);
     transition: 150ms;
