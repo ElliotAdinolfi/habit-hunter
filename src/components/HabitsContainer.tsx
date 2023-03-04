@@ -10,9 +10,10 @@ const HabitsContainer = () => {
   const { data: session } = useSession();
 
   useEffect(() => {
-    if (session) {
+    if (session && process.env.NODE_ENV === 'production') {
       runGetHabits();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function runGetHabits() {
@@ -33,7 +34,6 @@ const HabitsContainer = () => {
         );
       });
       setHabits(habitList);
-      console.log(habitList);
     })();
   }
 

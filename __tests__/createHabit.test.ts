@@ -12,7 +12,6 @@ import handler from '../src/pages/api/createHabit';
 
 describe('createHabit API should add a row to the database with the correct values', () => {
   beforeEach(async () => {
-    await pool.query('TRUNCATE TABLE test_habits');
     await pool.query(`CREATE TABLE IF NOT EXISTS test_habits (
       id SERIAL PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
@@ -21,6 +20,7 @@ describe('createHabit API should add a row to the database with the correct valu
       created_at TIMESTAMP NOT NULL DEFAULT NOW(),
       user_email VARCHAR(255) NOT NULL
     );`);
+    await pool.query('TRUNCATE TABLE test_habits');
   });
 
   afterAll(async () => {
