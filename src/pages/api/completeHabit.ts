@@ -6,16 +6,20 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { id, table } = req.body;
+  const { id, table } = req.query;
   const client: PoolClient = await pool.connect();
 
   try {
     const updateHabit = await client.query(
-      `UPDATE ${table} SET done_today = true WHERE id = $1 RETURNING *`,
+      `UPDATE ${table} SET done_today = true WHERE id = $1 RETURNING *;`,
+      [id]
+    );
+    const incrementStreak = await client.query(
+      `UPDATE ${table} SET streak = streak + 1 WHERE id = $1 RETURNING *;`,
       [id]
     );
 
-    res.json(updateHabit.rows[0]);
+    res.json(incrementStreak.rows[0]);
   } catch (error) {
     if (process.env.NODE_ENV === 'production') {
       console.log(error);

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from '@/styles/Habits.module.css';
 // @ts-ignore
 import DeleteHabit from './DeleteHabit.tsx';
+import axios from 'axios';
 
 interface HabitCardProps {
   id: number;
@@ -19,6 +20,17 @@ const HabitCard = ({
   handleDeleteHabit,
 }: HabitCardProps) => {
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [completedHabit, setCompletedHabit] = useState(done_today);
+  const [habitStreak, setHabitStreak] = useState(streak);
+
+  const handleUpdateHabit = async (id: number) => {
+    const table = 'habits';
+    const updatedData = await axios.put(
+      `/api/completeHabit?id=${id}&table=${table}`
+    );
+    setCompletedHabit(updatedData.data.done_today);
+    setHabitStreak(updatedData.data.streak);
+  };
 
   return (
     <div>
@@ -30,11 +42,17 @@ const HabitCard = ({
           &times;
         </a>
         <p>{name}</p>
-        <p>Streak: {streak}</p>
-        {done_today ? (
+        <p>Streak: {habitStreak}</p>
+        {completedHabit ? (
+          // TODO: Add functionality to mark as undone
           <button className={styles.doneButton}>Done 💪</button>
         ) : (
-          <button className={styles.doneButton}>Mark as done</button>
+          <button
+            className={styles.doneButton}
+            onClick={() => handleUpdateHabit(id)}
+          >
+            Mark as done
+          </button>
         )}
       </div>
       {confirmDelete && (

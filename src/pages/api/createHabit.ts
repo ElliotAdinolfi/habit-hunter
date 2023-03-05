@@ -11,7 +11,7 @@ export default async function handler(
 
   try {
     const newHabit = await client.query(
-      `INSERT INTO ${table} (name, user_email) VALUES ($1, $2) RETURNING *`,
+      `INSERT INTO ${table} (name, user_email) VALUES ($1, $2) RETURNING *;`,
       [habit, user_email]
     );
     res.json(newHabit.rows[0]);

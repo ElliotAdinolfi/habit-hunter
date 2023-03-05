@@ -11,7 +11,7 @@ export default async function handler(
 
   try {
     const deletedHabit = await client.query(
-      `DELETE FROM ${table} WHERE id = $1 AND user_email = $2`,
+      `DELETE FROM ${table} WHERE id = $1 AND user_email = $2;`,
       [id, user_email]
     );
     res.status(200).json(deletedHabit);
