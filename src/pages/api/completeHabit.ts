@@ -10,12 +10,13 @@ export default async function handler(
   const client: PoolClient = await pool.connect();
 
   try {
-    const updateHabit = await client.query(
-      `UPDATE ${table} SET done_today = true WHERE id = $1 RETURNING *;`,
-      [id]
-    );
     const incrementStreak = await client.query(
-      `UPDATE ${table} SET streak = streak + 1 WHERE id = $1 RETURNING *;`,
+      `UPDATE ${table} 
+      SET 
+        streak = CASE WHEN done_today = true THEN streak ELSE streak + 1 END,
+        done_today = true
+      WHERE id = $1 AND done_today = false
+      RETURNING *;`,
       [id]
     );
 

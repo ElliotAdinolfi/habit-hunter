@@ -5,6 +5,7 @@ import {
   beforeAll,
   afterAll,
   jest,
+  test,
 } from '@jest/globals';
 import { NextApiRequest, NextApiResponse } from 'next';
 import pool from '../lib/db';
@@ -20,10 +21,10 @@ describe('createHabit API should add a row to the database with the correct valu
       created_at TIMESTAMP NOT NULL DEFAULT NOW(),
       user_email VARCHAR(255) NOT NULL
     );`);
-    await pool.query('TRUNCATE TABLE test_habits');
   });
 
   afterAll(async () => {
+    await pool.query('DROP TABLE test_habits');
     await pool.end();
   });
 
