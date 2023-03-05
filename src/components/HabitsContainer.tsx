@@ -13,7 +13,6 @@ const HabitsContainer = () => {
   const { data: session } = useSession();
 
   useEffect(() => {
-    console.log(process.env.NODE_ENV);
     if (
       (session && process.env.NODE_ENV === 'production') ||
       process.env.NODE_ENV === 'development'

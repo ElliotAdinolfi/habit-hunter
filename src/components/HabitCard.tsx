@@ -27,8 +27,7 @@ const HabitCard = ({
           className={styles.deleteHabit}
           onClick={() => setConfirmDelete(!confirmDelete)}
         >
-          {' '}
-          &times;{' '}
+          &times;
         </a>
         <p>{name}</p>
         <p>Done Today: {String(done_today)}</p>
