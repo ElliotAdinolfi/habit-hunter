@@ -20,6 +20,7 @@ const NewHabit = ({
 }: NewHabitProps) => {
   const { data: session } = useSession();
   const [habit, setHabit] = useState<string>('');
+  const [error, setError] = useState('');
 
   const handleKeyDown = (
     e: React.KeyboardEvent<HTMLInputElement>
@@ -34,6 +35,10 @@ const NewHabit = ({
   };
 
   const handleSubmit = () => {
+    if (habit === '') {
+      setError('Please enter a habit');
+      return;
+    }
     const user_email = session?.user?.email;
     const table = 'habits';
 
@@ -62,6 +67,7 @@ const NewHabit = ({
         <button className={styles.submitHabit} onClick={handleSubmit}>
           Submit
         </button>
+        <p className={styles.error}>{error}</p>
       </div>
     </div>
   );

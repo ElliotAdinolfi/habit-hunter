@@ -161,6 +161,13 @@
   outline: 2px solid var(--secondary);
 }
 
+.error {
+  color: hotpink;
+  font-size: 1.2rem;
+  position: relative;
+  top: 15px;
+}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .logoutButton,
