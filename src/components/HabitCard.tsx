@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from '@/styles/Habits.module.css';
-import DeleteHabit from './deleteHabit';
+// @ts-ignore
+import DeleteHabit from './DeleteHabit.tsx';
 
 interface HabitCardProps {
   id: number;
