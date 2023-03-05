@@ -28,23 +28,29 @@ describe('completeHabit API', () => {
     await pool.end();
   });
 
-  it('increments streak when habit is completed', async () => {
+  it('deletes the specified habit from the database', async () => {
     const id = 1;
-    const testTable = 'test_habits';
-    const response = await axios.put(
-      `http://localhost:3000/api/completeHabit?id=${id}&table=${testTable}`
-    );
+    const user_email = 'test@test.com';
+    const table = 'test_habits';
+
+    const response = await axios.delete('/api/deleteHabit', {
+      data: { id, user_email, table },
+    });
+
     expect(response.status).toEqual(200);
-    expect(response.data.streak).toEqual(1);
+    expect(response.data.id).toEqual(1);
   });
 
-  it('does not increment streak when habit is already completed', async () => {
+  it('should return nothing if the habit is not found', async () => {
     const id = 1;
-    const testTable = 'test_habits';
-    const response = await axios.put(
-      `http://localhost:3000/api/completeHabit?id=${id}&table=${testTable}`
-    );
+    const user_email = 'test@test.com';
+    const table = 'test_habits';
+
+    const response = await axios.delete('/api/deleteHabit', {
+      data: { id, user_email, table },
+    });
+
     expect(response.status).toEqual(200);
-    expect(response.data.streak).toBe(undefined);
+    expect(response.data.id).toEqual(undefined);
   });
 });
