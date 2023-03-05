@@ -7,7 +7,7 @@ interface HabitCardProps {
   id: number;
   name: string;
   done_today: boolean;
-  days_completed: number;
+  streak: number;
   handleDeleteHabit: (id: number) => void;
 }
 
@@ -15,7 +15,7 @@ const HabitCard = ({
   id,
   name,
   done_today,
-  days_completed,
+  streak,
   handleDeleteHabit,
 }: HabitCardProps) => {
   const [confirmDelete, setConfirmDelete] = useState(false);
@@ -30,8 +30,12 @@ const HabitCard = ({
           &times;
         </a>
         <p>{name}</p>
-        <p>Done Today: {String(done_today)}</p>
-        <p>Streak: {days_completed}</p>
+        <p>Streak: {streak}</p>
+        {done_today ? (
+          <button className={styles.doneButton}>Done 💪</button>
+        ) : (
+          <button className={styles.doneButton}>Mark as done</button>
+        )}
       </div>
       {confirmDelete && (
         <DeleteHabit

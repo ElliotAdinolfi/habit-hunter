@@ -64,8 +64,24 @@
   transition: 300ms;
 }
 
+.habitCard p {
+  margin-bottom: 20px;
+}
+
 .hideCard {
   display: none;
+}
+
+.doneButton {
+  width: 80%;
+  height: 40px;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--secondary);
+  color: black;
+  transition: 300ms;
+  outline: 2px solid var(--secondary);
 }
 
 .deleteHabit {
@@ -173,6 +189,19 @@
   .logoutButton,
   .newHabit button {
     cursor: pointer;
+  }
+
+  .habitCard:hover {
+    transform: scale(1.03);
+    transition: 200ms;
+  }
+
+  .doneButton:hover {
+    cursor: pointer;
+    background-color: transparent;
+    outline: 2px solid var(--secondary);
+    transition: 300ms;
+    color: var(--secondary);
   }
 
   .closeForm:hover,
