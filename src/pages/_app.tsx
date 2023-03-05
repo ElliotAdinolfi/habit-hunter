@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch('/api/mycronjob');
+  const res = await fetch('/api/dailyReset');
   const data = await res.json();
 
   return {
