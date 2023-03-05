@@ -11,7 +11,7 @@ export default async function handler(
 
   try {
     const habits = await client.query(
-      `SELECT * FROM ${table} WHERE user_email = $1;`,
+      `SELECT * FROM ${table} WHERE user_email = $1 ORDER BY id;`,
       [user_email]
     );
     res.json(habits.rows);
