@@ -9,12 +9,3 @@ export default function App({ Component, pageProps }: AppProps) {
     </SessionProvider>
   );
 }
-
-export async function getServerSideProps() {
-  const res = await fetch('/api/dailyReset');
-  const data = await res.json();
-
-  return {
-    props: { message: data.message },
-  };
-}
