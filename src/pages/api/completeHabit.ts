@@ -19,7 +19,7 @@ export default async function handler(
       RETURNING *;`,
       [id]
     );
-
+    client.release();
     res.json(incrementStreak.rows[0]);
   } catch (error) {
     if (process.env.NODE_ENV === 'production') {
@@ -28,7 +28,5 @@ export default async function handler(
     } else {
       res.status(500);
     }
-  } finally {
-    client.release();
   }
 }

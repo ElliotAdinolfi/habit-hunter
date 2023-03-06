@@ -14,11 +14,10 @@ export default async function handler(
       `SELECT * FROM ${table} WHERE user_email = $1 ORDER BY id;`,
       [user_email]
     );
+    client.release();
     res.json(habits.rows);
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: 'Error in getHabits API' });
-  } finally {
-    client.release();
   }
 }

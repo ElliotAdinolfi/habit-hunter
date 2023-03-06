@@ -14,6 +14,7 @@ export default async function handler(
       `DELETE FROM ${table} WHERE id = $1 AND user_email = $2 RETURNING *;`,
       [id, user_email]
     );
+    client.release();
     res.status(200).json(deletedHabit.rows[0]);
   } catch (error) {
     if (process.env.NODE_ENV === 'production') {
@@ -22,7 +23,5 @@ export default async function handler(
     } else {
       res.status(500);
     }
-  } finally {
-    client.release();
   }
 }

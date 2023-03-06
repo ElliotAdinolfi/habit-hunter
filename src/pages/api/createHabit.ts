@@ -14,6 +14,7 @@ export default async function handler(
       `INSERT INTO ${table} (name, user_email) VALUES ($1, $2) RETURNING *;`,
       [habit, user_email]
     );
+    client.release();
     res.json(newHabit.rows[0]);
   } catch (error) {
     if (process.env.NODE_ENV === 'production') {
@@ -22,7 +23,5 @@ export default async function handler(
     } else {
       res.status(500);
     }
-  } finally {
-    client.release();
   }
 }
