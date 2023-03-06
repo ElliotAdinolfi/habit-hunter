@@ -2,7 +2,7 @@
 
 I made this application because I wanted a simple habit tracker that just allows me to log on quickly every day when I sit down in my office and mark habits as done.
 
-After reading Atomic Habits by [James Clear](https://jamesclear.com/), I became fascinated with habit formation. That lead me to changing the structure of my daily life and eventually the creation of this app.
+After reading [Atomic Habits by James Clear](https://jamesclear.com/), I became fascinated with habit formation. That lead me to changing the structure of my daily life and eventually the creation of this app.
 
 Studies show that it takes [66 days](https://jamesclear.com/new-habit) on average to form a new long term habit. By keeping track of your habit streaks you make it more likely to reach the 66 day mark.
 
