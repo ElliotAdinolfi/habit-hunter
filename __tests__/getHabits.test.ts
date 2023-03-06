@@ -25,7 +25,7 @@ describe('completeHabit API', () => {
       `INSERT INTO test_habits (name, user_email) VALUES ('Test Habit 2', 'test@test.com')`
     );
     await pool.query(
-      `INSERT INTO test_habits (name, user_email) VALUES ('Test Habit 3', 'othertest@test.com')`
+      `INSERT INTO test_habits (name, user_email) VALUES ('Test Habit 3', 'test2@test.com')`
     );
   });
 
