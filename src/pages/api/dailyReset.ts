@@ -7,12 +7,14 @@ export default function handler(
   res: NextApiResponse
 ) {
   async () => {
-    console.log('Daily reset at 3am EST');
     const client: PoolClient = await pool.connect();
     try {
-      const resetHabits = await client.query(`UPDATE habits SET
+      await client.query(`UPDATE habits SET
         done_today = false,
         streak = CASE WHEN done_today = false THEN 0 ELSE streak END;`);
+      res
+        .status(200)
+        .json({ message: 'Daily Reset cron job started' });
     } catch (error) {
       if (process.env.NODE_ENV === 'production') {
         console.log(error);
@@ -24,5 +26,4 @@ export default function handler(
       client.release();
     }
   };
-  res.status(200).json({ message: 'Daily Reset cron job started' });
 }
