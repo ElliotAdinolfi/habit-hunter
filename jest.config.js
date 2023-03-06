@@ -11,7 +11,6 @@ const customJestConfig = {
   },
   testEnvironment: 'jest-environment-jsdom',
   preset: 'ts-jest',
-  setupFilesAfterEnv: ['./setupTests.ts'],
   testEnvironmentOptions: {
     url: 'http://localhost:3000',
   },
