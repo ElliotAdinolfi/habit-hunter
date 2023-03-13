@@ -10,7 +10,7 @@ I have purposely made it so that once a habit is marked as done it cannot be und
 
 # How to use the app
 
-Go to [www.habitHunter.io](https://www.habithunter.io/)
+Go to [www.habitHunter.io](https://www.Habithunter.io/)
 
 1. Log in with your Google or Github SSO.
 
