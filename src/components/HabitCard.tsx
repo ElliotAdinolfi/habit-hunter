@@ -10,6 +10,7 @@ interface HabitCardProps {
   done_today: boolean;
   streak: number;
   handleDeleteHabit: (id: number) => void;
+  max_streak: number;
 }
 
 const HabitCard = ({
@@ -18,10 +19,14 @@ const HabitCard = ({
   done_today,
   streak,
   handleDeleteHabit,
+  max_streak,
 }: HabitCardProps) => {
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [completedHabit, setCompletedHabit] = useState(done_today);
   const [habitStreak, setHabitStreak] = useState(streak);
+  const [maxStreak, setMaxStreak] = useState(max_streak);
+
+  console.log('max_streak', max_streak);
 
   const handleUpdateHabit = async (id: number) => {
     const table = 'habits';
@@ -30,6 +35,7 @@ const HabitCard = ({
     );
     setCompletedHabit(updatedData.data.done_today);
     setHabitStreak(updatedData.data.streak);
+    setMaxStreak(updatedData.data.max_streak);
   };
 
   return (
@@ -41,10 +47,9 @@ const HabitCard = ({
         >
           &times;
         </a>
-        <p>{name}</p>
-        <p>Streak: {habitStreak}</p>
+        <h1>{name}</h1>
+        <p>Current Streak: {habitStreak}</p>
         {completedHabit ? (
-          // TODO: Add functionality to mark as undone
           <button className={styles.doneButton}>Done 💪</button>
         ) : (
           <button
@@ -54,6 +59,7 @@ const HabitCard = ({
             Mark as done
           </button>
         )}
+        <p>Max Streak: {maxStreak}</p>
       </div>
       {confirmDelete && (
         <DeleteHabit

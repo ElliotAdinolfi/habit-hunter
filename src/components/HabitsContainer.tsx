@@ -39,6 +39,7 @@ const HabitsContainer = () => {
                   name={habit.name}
                   done_today={habit.done_today}
                   streak={habit.streak}
+                  max_streak={habit.max_streak}
                   handleDeleteHabit={() =>
                     handleDeleteHabit(habit.id)
                   }
@@ -53,6 +54,7 @@ const HabitsContainer = () => {
                   name={habit.name}
                   done_today={habit.done_today}
                   streak={habit.streak}
+                  max_streak={habit.max_streak}
                   handleDeleteHabit={() =>
                     handleDeleteHabit(habit.id)
                   }

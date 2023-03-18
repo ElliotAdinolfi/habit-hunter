@@ -14,7 +14,8 @@ export default async function handler(
       `UPDATE ${table} 
       SET 
         streak = CASE WHEN done_today = true THEN streak ELSE streak + 1 END,
-        done_today = true
+        done_today = true,
+        max_streak = GREATEST(streak + 1, max_streak)
       WHERE id = $1 AND done_today = false
       RETURNING *;`,
       [id]

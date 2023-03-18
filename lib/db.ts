@@ -9,6 +9,7 @@ const tableQuery = `CREATE TABLE IF NOT EXISTS habits (
   name VARCHAR(255) NOT NULL,
   done_today BOOLEAN NOT NULL DEFAULT false,
   streak INTEGER NOT NULL DEFAULT 0,
+  max_streak INTEGER NOT NULL DEFAULT 0,
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
   user_email VARCHAR(255) NOT NULL
 );`;
